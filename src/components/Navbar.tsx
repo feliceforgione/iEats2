@@ -4,6 +4,7 @@ import Image from "next/image";
 import logo from "../../public/logo.png";
 import Link from "next/link";
 import { MenuLink } from "@/entities/MenuLink";
+import CartIcon from "./CartIcon";
 
 const LINKS: MenuLink[] = [
   { id: 1, title: "Home", url: "/" },
@@ -28,6 +29,7 @@ function Navbar() {
         ) : (
           <Link href="/login">Login</Link>
         )}
+        <CartIcon />
       </div>
       <div className="md:hidden">
         <MobileMenu links={LINKS} user={user} />
