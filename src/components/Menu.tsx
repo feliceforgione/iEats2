@@ -3,8 +3,14 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { RiMenu4Fill, RiCloseFill } from "react-icons/ri";
+import { MenuLink } from "@/entities/MenuLink";
 
-function MobileMenu({ links, user }) {
+interface Props {
+  links: MenuLink[];
+  user: boolean;
+}
+
+function MobileMenu({ links, user }: Props) {
   const [open, setOpen] = useState(false);
 
   return (

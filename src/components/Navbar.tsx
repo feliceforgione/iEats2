@@ -3,8 +3,9 @@ import MobileMenu from "./Menu";
 import Image from "next/image";
 import logo from "../../public/logo.png";
 import Link from "next/link";
+import { MenuLink } from "@/entities/MenuLink";
 
-const LINKS = [
+const LINKS: MenuLink[] = [
   { id: 1, title: "Home", url: "/" },
   { id: 2, title: "Menu", url: "/menu" },
 ];
