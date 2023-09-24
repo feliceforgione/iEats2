@@ -15,7 +15,7 @@ const LINKS: MenuLink[] = [
 function Navbar() {
   const user = false; // temp
   return (
-    <div className="h-12 p-4 flex justify-between items-center border-b-2">
+    <div className="h-12 p-4 flex justify-between items-center border-b-2 uppercase lg:px-20 xl:px-30">
       <div className="relative w-32 h-8">
         <Image src={logo} alt="logo" fill />
       </div>

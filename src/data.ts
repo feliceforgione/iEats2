@@ -66,3 +66,32 @@ export const featuredProducts: Products = [
     ],
   },
 ];
+
+type Menu = {
+  id: number;
+  slug: string;
+  title: string;
+  description?: string;
+  img?: string;
+  color: string;
+}[];
+
+export const menu: Menu = [
+  {
+    id: 1,
+    slug: "pizza",
+    title: "Pizza",
+    description:
+      "Delicious, handcrafted pizza with a perfect blend of premium toppings and a mouthwatering crust",
+    img: "",
+    color: "blue",
+  },
+  {
+    id: 2,
+    slug: "pasta",
+    title: "Pasta",
+    description: "",
+    img: "",
+    color: "red",
+  },
+];
