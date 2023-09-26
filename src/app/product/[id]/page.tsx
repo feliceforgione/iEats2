@@ -5,8 +5,8 @@ import React from "react";
 
 function ProductPage() {
   return (
-    <div className="p-4 lg:px-20 h-screen flex flex-col justify-around md:flex-row">
-      <div className="relative w-full h-1/2">
+    <div className="p-4 lg:px-20 h-screen flex flex-col justify-around md:flex-row md:gap-8 md:items-center">
+      <div className="relative w-full h-1/2 md:h-[70%]">
         {singleProduct.img && (
           <Image
             src={singleProduct.img}
@@ -16,8 +16,10 @@ function ProductPage() {
           />
         )}
       </div>
-      <div className="h-1/2 flex flex-col gap-3">
-        <h1 className="text-3xl font-bold uppercase">{singleProduct.title}</h1>
+      <div className="h-1/2 flex flex-col gap-3 md:h-[70%] md:justify-center md:gap-6 lg:gap-8 ">
+        <h1 className="text-3xl font-bold uppercase xl:text-4xl">
+          {singleProduct.title}
+        </h1>
         <p>{singleProduct.description}</p>
         <Price
           id={singleProduct.id}
