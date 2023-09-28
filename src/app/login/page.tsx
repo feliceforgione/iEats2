@@ -13,12 +13,12 @@ function LoginPage() {
         <div className="flex flex-col gap-7 p-10 md:w-1/2 md:h-full">
           <h1 className="font-bold text-xl xl:text-3xl">Greetings</h1>
           <p>Please log into your account</p>
-          <button className="flex gap-4 p-4 ring-1 ring-red-500  rounded-lg items-center">
-            <RiGoogleFill />
+          <button className="flex gap-4 p-4 ring-1 ring-red-500 bg-red-100 rounded-lg items-center">
+            <RiGoogleFill className="text-3xl" />
             <span>Sign in with Google</span>
           </button>
-          <button className="flex gap-4 p-4 ring-1 ring-red-500  rounded-lg items-center">
-            <RiFacebookBoxFill />
+          <button className="flex gap-4 p-4 ring-1 ring-blue-500 bg-blue-100 rounded-lg items-center">
+            <RiFacebookBoxFill className="text-3xl" />
             <span>Sign in with FaceBook</span>
           </button>
           <p className="text-sm">
