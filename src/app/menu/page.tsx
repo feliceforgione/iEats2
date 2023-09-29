@@ -3,7 +3,6 @@ import Link from "next/link";
 import React from "react";
 
 const getData = async () => {
-  console.log(`http://${process.env.SERVER_DOMAIN}:${process.env.SERVER_PORT}`);
   const resp = await fetch(
     `http://${process.env.SERVER_DOMAIN}:${process.env.SERVER_PORT}/api/categories`,
     {

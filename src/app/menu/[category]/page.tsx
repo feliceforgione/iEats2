@@ -1,12 +1,32 @@
-import { pizza } from "@/data";
+import { Product } from "@/entities/ProductType";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-function CategoryPage() {
+type Props = {
+  params: { category: string };
+};
+
+const getData = async (category: string) => {
+  const resp = await fetch(
+    `http://${process.env.SERVER_DOMAIN}:${process.env.SERVER_PORT}/api/products?cat=${category}`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  if (!resp.ok) {
+    throw new Error("Category fetch failed");
+  }
+
+  return resp.json();
+};
+
+async function CategoryPage({ params }: Props) {
+  const products: Product[] = await getData(params.category);
   return (
     <div className="flex flex-wrap">
-      {pizza.map((item) => (
+      {products.map((item) => (
         <Link
           href={`/product/${item.id}`}
           key={item.id}
