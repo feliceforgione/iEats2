@@ -1,8 +1,24 @@
 import React from "react";
 import Image from "next/image";
-import { featuredProducts } from "@/data";
+import { Product } from "@/entities/ProductType";
 
-function Featured() {
+const getData = async () => {
+  const resp = await fetch(
+    `http://${process.env.SERVER_DOMAIN}:${process.env.SERVER_PORT}/api/products`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  if (!resp.ok) {
+    throw new Error("Category fetch failed");
+  }
+
+  return resp.json();
+};
+
+async function Featured() {
+  const featuredProducts: Product[] = await getData();
   return (
     <div className="w-screen overflow-x-scroll ">
       <div className="flex  w-max">
