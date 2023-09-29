@@ -1,8 +1,25 @@
-import { menu } from "@/data";
+import { MenuType } from "@/entities/MenuType";
 import Link from "next/link";
 import React from "react";
 
-function MenuPage() {
+const getData = async () => {
+  console.log(`http://${process.env.SERVER_DOMAIN}:${process.env.SERVER_PORT}`);
+  const resp = await fetch(
+    `http://${process.env.SERVER_DOMAIN}:${process.env.SERVER_PORT}/api/categories`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  if (!resp.ok) {
+    throw new Error("Category fetch failed");
+  }
+
+  return resp.json();
+};
+
+async function MenuPage() {
+  const menu: MenuType = await getData();
   return (
     <div className="flex flex-col p-4 items-center h-[calc(100vh-5rem)] md:flex-row lg:px-20 xl:px-30">
       {menu.map((category) => (
