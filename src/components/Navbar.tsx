@@ -6,6 +6,7 @@ import Link from "next/link";
 import { MenuLink } from "@/entities/MenuLink";
 import CartIcon from "./CartIcon";
 import { RiPhoneFill } from "react-icons/ri";
+import UserLinks from "./UserLinks";
 
 const LINKS: MenuLink[] = [
   { id: 1, title: "Home", url: "/" },
@@ -28,11 +29,7 @@ function Navbar() {
             {link.title}
           </Link>
         ))}
-        {user ? (
-          <Link href="/orders">Orders</Link>
-        ) : (
-          <Link href="/login">Login</Link>
-        )}
+        <UserLinks />
         <CartIcon />
       </div>
       <div className="md:hidden">
