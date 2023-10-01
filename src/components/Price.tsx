@@ -11,6 +11,10 @@ function Price({ product }: { product: Product }) {
   const { addToCart } = useCartStore();
 
   useEffect(() => {
+    useCartStore.persist.rehydrate();
+  }, []);
+
+  useEffect(() => {
     if (product.options?.length) {
       setTotalPrice(
         (product.options[selectedOption].additionalPrice +

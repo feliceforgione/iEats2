@@ -1,10 +1,15 @@
 "use client";
 import { useCartStore } from "@/utils/store";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 
 function CartPage() {
   const { products, removeFromCart, totalItems, totalPrice } = useCartStore();
+
+  useEffect(() => {
+    useCartStore.persist.rehydrate();
+  }, []);
+
   return (
     <div className="flex flex-col h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] lg:flex-row">
       {/* Cart Items */}
