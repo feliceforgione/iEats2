@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { RiEdit2Line } from "react-icons/ri";
+import { toast } from "react-toastify";
 
 function OrdersPage() {
   const { data: session, status } = useSession();
@@ -45,6 +46,7 @@ function OrdersPage() {
     const status = input.value;
 
     mutation.mutate({ id, status });
+    toast.success("The order status has changed");
   };
 
   if (isLoading || status === "loading") {
