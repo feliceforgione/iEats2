@@ -23,7 +23,9 @@ function CartPage() {
               <Image src={product.img} alt="" width={100} height={100} />
             )}
             <div>
-              <h1 className="font-bold text-xl uppercase">{product.title}</h1>
+              <h1 className="font-bold text-xl uppercase">
+                {product.title} x{product.quantity}
+              </h1>
               <span>{product.optionTitle}</span>
             </div>
             <h2 className="font-bold">{product.price}</h2>
