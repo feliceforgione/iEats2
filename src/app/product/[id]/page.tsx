@@ -6,7 +6,7 @@ import React from "react";
 
 const getData = async (id: string) => {
   const resp = await fetch(
-    `http://${process.env.SERVER_DOMAIN}:${process.env.SERVER_PORT}/api/products/${id}`,
+    `http://${process.env.NEXT_PUBLIC_SERVER_DOMAIN}:${process.env.NEXT_PUBLIC_SERVER_PORT}/api/products/${id}`,
     {
       cache: "no-store",
     }
@@ -25,7 +25,7 @@ async function ProductPage({ params }: { params: { id: string } }) {
   return (
     <div className="p-4 lg:px-20 h-screen flex flex-col justify-around relative md:flex-row md:gap-8 md:items-center">
       <div className="relative w-full h-1/2 md:h-[70%]">
-        {product.img && (
+        {product?.img && (
           <Image src={product.img} alt="" className="object-contain" fill />
         )}
       </div>

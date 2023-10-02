@@ -4,7 +4,7 @@ import { Product } from "@/entities/ProductType";
 
 const getData = async () => {
   const resp = await fetch(
-    `http://${process.env.SERVER_DOMAIN}:${process.env.SERVER_PORT}/api/products`,
+    `http://${process.env.NEXT_PUBLIC_SERVER_DOMAIN}:${process.env.NEXT_PUBLIC_SERVER_PORT}/api//products`,
     {
       cache: "no-store",
     }

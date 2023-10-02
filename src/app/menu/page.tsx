@@ -4,7 +4,7 @@ import React from "react";
 
 const getData = async () => {
   const resp = await fetch(
-    `http://${process.env.SERVER_DOMAIN}:${process.env.SERVER_PORT}/api/categories`,
+    `http://${process.env.NEXT_PUBLIC_SERVER_DOMAIN}:${process.env.NEXT_PUBLIC_SERVER_PORT}/api/categories`,
     {
       cache: "no-store",
     }

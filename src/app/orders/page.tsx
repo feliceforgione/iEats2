@@ -73,7 +73,7 @@ function OrdersPage() {
               </td>
               <td className="py-6 px-1">${item.price}</td>
               <td className="hidden py-6 px-1 md:block">
-                {JSON.stringify(item.products)}
+                {item.products[0].title}
               </td>
               {session?.user.isAdmin ? (
                 <td>

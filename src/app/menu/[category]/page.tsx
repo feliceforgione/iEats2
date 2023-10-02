@@ -9,7 +9,7 @@ type Props = {
 
 const getData = async (category: string) => {
   const resp = await fetch(
-    `http://${process.env.SERVER_DOMAIN}:${process.env.SERVER_PORT}/api/products?cat=${category}`,
+    `http://${process.env.NEXT_PUBLIC_SERVER_DOMAIN}:${process.env.NEXT_PUBLIC_SERVER_PORT}/api//products?cat=${category}`,
     {
       cache: "no-store",
     }
