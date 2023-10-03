@@ -36,7 +36,7 @@ async function ProductPage({ params }: { params: { id: string } }) {
         <p>{product.description}</p>
         <Price product={product} />
       </div>
-      <DeleteButton id={product.id} />
+      <DeleteButton id={product.id} type="products" />
     </div>
   );
 }

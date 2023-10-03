@@ -4,7 +4,12 @@ import { useRouter } from "next/navigation";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { toast } from "react-toastify";
 
-const DeleteButton = ({ id }: { id: string }) => {
+type Props = {
+  id: string;
+  type: "products";
+};
+
+const DeleteButton = ({ id, type }: Props) => {
   const { data, status } = useSession();
   const router = useRouter();
 
@@ -12,9 +17,12 @@ const DeleteButton = ({ id }: { id: string }) => {
   if (status === "unauthenticated" || !data?.user.isAdmin) return;
 
   async function handleDelete() {
-    const resp = await fetch(`http://localhost:3000/api/products/${id}`, {
-      method: "DELETE",
-    });
+    const resp = await fetch(
+      `http://${process.env.NEXT_PUBLIC_SERVER_DOMAIN}:${process.env.NEXT_PUBLIC_SERVER_PORT}/api/${type}/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
 
     if (resp.status == 200) {
       router.push("/menu");
@@ -27,7 +35,7 @@ const DeleteButton = ({ id }: { id: string }) => {
 
   return (
     <div
-      className="flex absolute top-4 right-4 items-center justify-center gap-1 cursor-pointer"
+      className="flex absolute top-4 right-4 items-center justify-center gap-1 cursor-pointer text-red-700 font-bold "
       onClick={handleDelete}
     >
       <RiDeleteBin2Fill />
