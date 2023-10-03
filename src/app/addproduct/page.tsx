@@ -1,8 +1,11 @@
 "use client";
+import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiFileUploadLine } from "react-icons/ri";
+import { MenuType } from "@/entities/MenuType";
+import { toast } from "react-toastify";
 
 type Option = {
   title: string;
@@ -32,16 +35,26 @@ function AddProduct() {
   const [file, setFile] = useState<File>();
   const router = useRouter();
 
-  if (status === "loading") {
+  const { isLoading, data: categories } = useQuery<MenuType>({
+    queryKey: ["catgories"],
+    queryFn: () =>
+      fetch(
+        `http://${process.env.NEXT_PUBLIC_SERVER_DOMAIN}:${process.env.NEXT_PUBLIC_SERVER_PORT}/api/categories`
+      ).then((res) => res.json()),
+  });
+
+  if (status === "loading" || isLoading) {
     return <p>Loading...</p>;
   }
 
   if (status === "unauthenticated" || !session?.user.isAdmin) {
-    router.push("/");
+    router.push("/login");
   }
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     setInputs((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
@@ -98,7 +111,7 @@ function AddProduct() {
       );
 
       const data = await resp.json();
-
+      toast.success("Product added");
       router.push(`/product/${data.id}`);
     } catch (error) {
       console.log(error);
@@ -158,13 +171,22 @@ function AddProduct() {
         </div>
         <div className="w-full flex flex-col gap-2 ">
           <label className="text-sm">Category</label>
-          <input
-            className="ring-1 ring-red-200 p-4 rounded-sm  outline-none"
-            type="text"
-            placeholder=""
+          <select
             name="catSlug"
             onChange={handleChange}
-          />
+            className="ring-1 ring-red-200 p-4 rounded-sm  outline-none"
+            required
+            value={inputs.catSlug}
+          >
+            <option value="" disabled>
+              Select a Category
+            </option>
+            {categories?.map((category, ind) => (
+              <option value={category.slug} key={category.id} className="py-5">
+                {category.title}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="w-full flex flex-col gap-2">
           <label className="text-sm">Options</label>
