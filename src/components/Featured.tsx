@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Product } from "@/entities/ProductType";
+import Link from "next/link";
 
 const getData = async () => {
   const resp = await fetch(
@@ -41,9 +42,11 @@ async function Featured() {
               </h1>
               <p className="lg:p-4">{product.description}</p>
               <span className="font-bold text-lg">${product.price}</span>
-              <button className="bg-yellow p-2 rounded-lg text-white">
-                Add to cart
-              </button>
+              <Link href={`/product/${product.id}`}>
+                <button className="bg-yellow p-2 rounded-lg text-white">
+                  Add to cart
+                </button>
+              </Link>
             </div>
           </div>
         ))}

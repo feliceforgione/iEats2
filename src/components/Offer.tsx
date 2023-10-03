@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function Offer() {
@@ -13,9 +14,11 @@ function Offer() {
           bursting with the aromatic essence of fresh garlic and buttery.
           goodness.
         </p>
-        <button className="bg-red-500 text-white rounded-lg p-3">
-          Order Now
-        </button>
+        <Link href={"/menu"}>
+          <button className="bg-red-500 text-white rounded-lg p-3">
+            Order Now
+          </button>
+        </Link>
       </div>
       <div className="flex-1 w-full relative">
         <Image
