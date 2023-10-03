@@ -17,7 +17,7 @@ function Price({ product }: { product: Product }) {
   useEffect(() => {
     if (product.options?.length) {
       setTotalPrice(
-        (product.options[selectedOption].additionalPrice +
+        (Number(product.options[selectedOption].additionalPrice) +
           Number(product.price)) *
           quantity
       );
@@ -42,7 +42,7 @@ function Price({ product }: { product: Product }) {
     <div className="flex flex-col gap-3">
       <h2 className="text-2xl font-bold">${totalPrice}</h2>
       <div className="flex gap-3">
-        {product.options?.length &&
+        {!!product.options?.length &&
           product.options?.map((option, ind) => (
             <button
               key={option.title}
