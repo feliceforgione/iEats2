@@ -10,9 +10,9 @@ function AdminMenu() {
   if (status === "loading") return;
   if (status === "unauthenticated" || !data?.user.isAdmin) return;
   return (
-    <div className="flex absolute top-4 right-4 items-center justify-center gap-6 text-red-800 font-bold ">
+    <div className="flex  items-center justify-end gap-6 text-red-800 font-bold px-20 ">
       <Link
-        href={"/addategory"}
+        href={"/addcategory"}
         className="flex justify-center items-center gap-1"
       >
         <RiAddBoxFill />

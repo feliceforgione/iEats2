@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 type Props = {
   id: string;
-  type: "products";
+  type: "products" | "categories";
 };
 
 const DeleteButton = ({ id, type }: Props) => {
@@ -26,7 +26,7 @@ const DeleteButton = ({ id, type }: Props) => {
 
     if (resp.status == 200) {
       router.push("/menu");
-      toast.success("Product deleted");
+      toast.success(`${type} Page deleted`);
     } else {
       const data = await resp.json();
       toast.error(data.message);
@@ -39,7 +39,7 @@ const DeleteButton = ({ id, type }: Props) => {
       onClick={handleDelete}
     >
       <RiDeleteBin2Fill />
-      <span>Delete</span>
+      <span>{`Delete ${type} Page`}</span>
     </div>
   );
 };
