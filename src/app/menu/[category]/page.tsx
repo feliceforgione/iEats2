@@ -1,3 +1,4 @@
+import DeleteButton from "@/components/DeleteButton";
 import { Product } from "@/entities/ProductType";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,34 +24,38 @@ const getData = async (category: string) => {
 };
 
 async function CategoryPage({ params }: Props) {
-  const products: Product[] = await getData(params.category);
+  const category = params.category;
+  const products: Product[] = await getData(category);
   return (
-    <div className="flex flex-wrap">
-      {products.map((item) => (
-        <Link
-          href={`/product/${item.id}`}
-          key={item.id}
-          className="w-full h-[60vh] border-r-2 border-b-2 border-red-400 p-4 flex flex-col justify-between group even:bg-orange-50 sm:w-1/2 lg:w-1/3"
-        >
-          {item.img && (
-            <div className="relative h-[80%]">
-              <Image
-                src={item.img}
-                alt=""
-                fill
-                className="object-contain"
-              ></Image>
+    <div className="relative">
+      <div className="flex flex-wrap  mx-10 py-10">
+        {products.map((item) => (
+          <Link
+            href={`/product/${item.id}`}
+            key={item.id}
+            className="w-full h-[60vh] border-2 border-gray-200 p-4 flex flex-col justify-between group even:bg-orange-50 sm:w-1/2 lg:w-1/3"
+          >
+            {item.img && (
+              <div className="relative h-[80%]">
+                <Image
+                  src={item.img}
+                  alt=""
+                  fill
+                  className="object-contain"
+                ></Image>
+              </div>
+            )}
+            <div className="flex items-center justify-between font-bold">
+              <h1>{item.title}</h1>
+              <h2 className="group-hover:hidden">${item.price}</h2>
+              <button className="hidden uppercase bg-yellow p-2 rounded-lg group-hover:block">
+                Add to Cart
+              </button>
             </div>
-          )}
-          <div className="flex items-center justify-between font-bold">
-            <h1>{item.title}</h1>
-            <h2 className="group-hover:hidden">${item.price}</h2>
-            <button className="hidden uppercase bg-yellow p-2 rounded-lg group-hover:block">
-              Add to Cart
-            </button>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        ))}
+      </div>
+      <DeleteButton id={category} type="categories" />
     </div>
   );
 }
