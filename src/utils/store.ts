@@ -26,20 +26,20 @@ export const useCartStore = create(
               ? {
                   ...product,
                   quantity: product.quantity + item.quantity,
-                  price: product.price + item.price,
+                  price: product.price + Number(item.price),
                 }
               : product
           );
           set((state) => ({
             products: updatedProducts,
             totalItems: state.totalItems + item.quantity,
-            totalPrice: state.totalPrice + item.price,
+            totalPrice: state.totalPrice + Number(item.price),
           }));
         } else {
           set((state) => ({
             products: [...state.products, item],
             totalItems: state.totalItems + item.quantity,
-            totalPrice: state.totalPrice + item.price,
+            totalPrice: state.totalPrice + Number(item.price),
           }));
         }
       },
@@ -47,7 +47,7 @@ export const useCartStore = create(
         set((state) => ({
           products: state.products.filter((product) => product.id != item.id),
           totalItems: state.totalItems - item.quantity,
-          totalPrice: state.totalPrice - item.price,
+          totalPrice: state.totalPrice - Number(item.price),
         }));
       },
     }),
