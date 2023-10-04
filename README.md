@@ -18,7 +18,7 @@
 
 ## About The Project
 
-<img src="public/images/ieatsScreenshot.jpg" alt="Logo" >
+<img src="public/ieatsScreenshot.jpg" alt="Logo" >
 
 Making online ordering easy without the service fees. A full-stack online ordering framework to quickly setup a food serives company.
 
