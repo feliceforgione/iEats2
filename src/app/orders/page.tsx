@@ -12,10 +12,6 @@ function OrdersPage() {
 
   const router = useRouter();
 
-  if (status === "unauthenticated") {
-    router.push("/login");
-  }
-
   const { isLoading, data, error } = useQuery({
     queryKey: ["orders"],
     queryFn: () =>
@@ -52,6 +48,10 @@ function OrdersPage() {
   if (isLoading || status === "loading") {
     return <span>Loading...</span>;
   }
+  if (status === "unauthenticated") {
+    return router.push("/login");
+  }
+
   return (
     <div className="p-4 lg:px-20 xl:px-30">
       <table className="w-full">

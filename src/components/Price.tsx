@@ -21,6 +21,8 @@ function Price({ product }: { product: Product }) {
           Number(product.price)) *
           quantity
       );
+    } else {
+      setTotalPrice(Number(product.price) * quantity);
     }
   }, [product, selectedOption, quantity]);
 

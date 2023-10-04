@@ -7,10 +7,14 @@ import Link from "next/link";
 function AdminMenu() {
   const { data, status } = useSession();
 
-  if (status === "loading") return;
-  if (status === "unauthenticated" || !data?.user.isAdmin) return;
+  if (
+    status === "loading" ||
+    status === "unauthenticated" ||
+    !data?.user.isAdmin
+  )
+    return " ";
   return (
-    <div className="flex  items-center justify-end gap-6 text-red-800 font-bold px-20 ">
+    <div className="flex  items-center justify-center gap-6 text-red-800 font-bold md:justify-end">
       <Link
         href={"/addcategory"}
         className="flex justify-center items-center gap-1"
