@@ -20,8 +20,9 @@ function Navbar() {
       <div className="relative w-32 h-8">
         <Image src={logo} alt="logo" fill />
       </div>
-      <div className="w-36 bg-yellow rounded-xl flex p-1 gap-1 justify-center items-center ">
-        <RiPhoneFill /> <span>888-8888</span>
+      <div className="w-48 bg-yellow rounded-md flex p-1  gap-1 justify-around items-center lg:order-5">
+        <RiPhoneFill className="text-xl" />
+        <span className="border-l-2 border-black px-2">888-888-8888</span>
       </div>
       <div className="hidden md:flex gap-4">
         {LINKS.map((link) => (

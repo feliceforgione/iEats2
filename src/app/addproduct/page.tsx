@@ -17,6 +17,7 @@ type Inputs = {
   description: string;
   price: number;
   catSlug: string;
+  isFeatured: boolean;
 };
 
 function AddProduct() {
@@ -26,6 +27,7 @@ function AddProduct() {
     description: "",
     price: 0,
     catSlug: "",
+    isFeatured: false,
   });
   const [option, setOption] = useState<Option>({
     title: "",
@@ -119,24 +121,29 @@ function AddProduct() {
   };
 
   return (
-    <div className="p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex items-center justify-center">
+    <div className="p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-min flex items-center justify-center">
       <form onSubmit={handleSubmit} className="flex flex-wrap gap-6">
         <h1 className="text-3xl mb-2 text-gray-500 font-bold">
           Add New Product
         </h1>
-        <div className="w-full flex flex-col gap-2 ">
+        <div className="w-full flex gap-2 ">
           <label
-            className="text-sm cursor-pointer flex gap-4 items-center"
+            className="cursor-pointer flex gap-4 items-center"
             htmlFor="file"
           >
             <RiFileUploadLine className="text-2xl" />
             <span>Upload Image</span>
+            {file && (
+              <span className="text-red-500 font-light">{file.name}</span>
+            )}
           </label>
           <input
             type="file"
             onChange={handleChangeImg}
             id="file"
-            className="hidden"
+            className="opacity-0"
+            accept="image/png, image/jpeg"
+            required
           />
         </div>
         <div className="w-full flex flex-col gap-2 ">
@@ -188,6 +195,21 @@ function AddProduct() {
             ))}
           </select>
         </div>
+        <div className=" flex gap-2 items-center">
+          <label htmlFor="isFeatured" className="">
+            Homepage Featured Product:
+          </label>
+          <input
+            type="checkbox"
+            className="w-6 h-6"
+            name="isFeatured"
+            onChange={(e) =>
+              setInputs((prev) => {
+                return { ...prev, isFeatured: e.target.checked };
+              })
+            }
+          />
+        </div>
         <div className="w-full flex flex-col gap-2">
           <label className="text-sm">Options</label>
           <div className="flex">
@@ -196,6 +218,7 @@ function AddProduct() {
               type="text"
               placeholder="Title"
               name="title"
+              value={option.title}
               onChange={changeOption}
             />
             <input
@@ -203,11 +226,19 @@ function AddProduct() {
               type="number"
               placeholder="Additional Price"
               name="additionalPrice"
+              value={option.additionalPrice}
               onChange={changeOption}
             />
             <button
+              type="button"
               className="bg-gray-500 p-2 text-white"
-              onClick={() => setOptions((prev) => [...prev, option])}
+              onClick={() => {
+                setOptions((prev) => [...prev, option]);
+                setOption({
+                  title: "",
+                  additionalPrice: 0,
+                });
+              }}
             >
               Add Option
             </button>

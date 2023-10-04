@@ -95,14 +95,14 @@ function AddCategory() {
   };
 
   return (
-    <div className="p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex items-center justify-center">
+    <div className="p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-min flex items-center justify-center">
       <form onSubmit={handleSubmit} className="flex flex-wrap gap-6">
         <h1 className="text-3xl mb-2 text-gray-500 font-bold">
           Add New Category
         </h1>
-        <div className="w-full flex flex-col gap-2 ">
+        <div className="w-full flex gap-2 ">
           <label
-            className="text-sm cursor-pointer flex gap-4 items-center"
+            className="cursor-pointer flex gap-4 items-center"
             htmlFor="file"
           >
             <RiFileUploadLine className="text-2xl" />
@@ -115,7 +115,9 @@ function AddCategory() {
             type="file"
             onChange={handleChangeImg}
             id="file"
-            className="hidden"
+            className="opacity-0"
+            accept="image/png, image/jpeg"
+            required
           />
         </div>
         <div className="w-full flex flex-col gap-2 ">

@@ -27,8 +27,11 @@ async function CategoryPage({ params }: Props) {
   const category = params.category;
   const products: Product[] = await getData(category);
   return (
-    <div className="relative">
-      <div className="flex flex-wrap  mx-10 py-10">
+    <div className="relative mx-10 py-5 md:min-h-[calc(100vh-9rem)]">
+      <div className="py-2 md:px-5">
+        <DeleteButton id={category} type="categories" />
+      </div>
+      <div className="flex flex-wrap  ">
         {products.map((item) => (
           <Link
             href={`/product/${item.id}`}
@@ -55,7 +58,6 @@ async function CategoryPage({ params }: Props) {
           </Link>
         ))}
       </div>
-      <DeleteButton id={category} type="categories" />
     </div>
   );
 }
