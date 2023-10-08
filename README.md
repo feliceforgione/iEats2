@@ -38,10 +38,10 @@ Making online ordering easy without the service fees. A full-stack online orderi
 
 # Features
 
-- Authenicate uses by using Google, Facebook, or GitHub
+- Authenticate uses by using Google, Facebook, or GitHub
 - Process payments using Stripe
 - Fully reactive and responsive site
-- Easily add products and categores as administer
+- Easily add products and categories as administer
 - Manage orders
 
 <!-- ROADMAP -->
