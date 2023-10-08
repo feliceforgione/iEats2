@@ -31,7 +31,10 @@ function LoginPage() {
             <RiGoogleFill className="text-3xl" />
             <span>Sign in with Google</span>
           </button>
-          <button className="flex gap-4 p-4 ring-1 ring-blue-500 bg-blue-100 rounded-lg items-center">
+          <button
+            className="flex gap-4 p-4 ring-1 ring-blue-500 bg-blue-100 rounded-lg items-center"
+            onClick={() => signIn("facebook")}
+          >
             <RiFacebookBoxFill className="text-3xl" />
             <span>Sign in with FaceBook</span>
           </button>
