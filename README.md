@@ -52,6 +52,7 @@ Making online ordering easy without the service fees. A full-stack online orderi
 - Create a `.env` file using `.env-sample` and using your own keys
 - Install packages
 - Run a docker container using `docker-compose.yml`
+- Generate prisma `npx prisma generate`
 - Run the development server:
 
   ```bash
